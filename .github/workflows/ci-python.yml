@@ -35,5 +35,4 @@ jobs:
     # 4. Ejecuta el análisis sobre todo tu código Python existente
     - name: Ejecutar Bandit
       # -r significa recursivo (busca en todas las carpetas)
-      # -c configura a Bandit para que excluya carpetas de prueba si es necesario
       run: bandit -r .
