@@ -1,0 +1,39 @@
+name: Python Security & Linting
+
+# Mantenemos la regla de que solo se ejecute si hay archivos Python,
+# para que sea compatible con tu estado actual sin código Python.
+on:
+  push:
+    branches: [ "main", "develop" ]
+    paths:
+      - '**/*.py'
+  pull_request:
+    branches: [ "main", "develop" ]
+    paths:
+      - '**/*.py'
+
+jobs:
+  bandit-security:
+    name: Análisis de Seguridad con Bandit
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Descarga tu código existente
+    - name: Checkout del repositorio
+      uses: actions/checkout@v4
+
+    # 2. Prepara el entorno Python
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x' # Usará la última versión estable de Python 3
+
+    # 3. Instala la herramienta de seguridad
+    - name: Instalar dependencias
+      run: python -m pip install --upgrade pip bandit
+
+    # 4. Ejecuta el análisis sobre todo tu código Python existente
+    - name: Ejecutar Bandit
+      # -r significa recursivo (busca en todas las carpetas)
+      # -c configura a Bandit para que excluya carpetas de prueba si es necesario
+      run: bandit -r .

@@ -1,0 +1,26 @@
+name: CI Prolog
+
+on:
+  pull_request:
+    branches: [develop]
+
+jobs:
+  prolog-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install SWI-Prolog
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y swi-prolog-nox
+
+      - name: Run Prolog tests if present
+        run: |
+          if [ -f tests/run_tests.pl ]; then
+            echo "Ejecutando tests/run_tests.pl"
+            swipl -q -f tests/run_tests.pl -t halt
+          else
+            echo "tests/run_tests.pl no existe; se omiten tests por ahora."
+          fi
