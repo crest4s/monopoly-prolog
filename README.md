@@ -106,20 +106,20 @@ python stats/graficas.py
 - Impuestos pagados por jugador
 - Frecuencia de victorias
 
-## Tests
+## Tests (pendiente)
 
-13 suites de tests con plunit cubriendo:
+Está planificada una batería de tests unitarios con plunit que cubrirá, entre otros, los siguientes aspectos:
 
-- Operaciones de listas (18 tests)
-- Generador pseudoaleatorio (10 tests)
-- Tablero y consultas (18 tests)
-- Compra de propiedades (5 tests)
-- Cobro de alquiler (7 tests)
-- Detección de monopolio (6 tests)
-- Bancarrota (4 tests)
-- Mecánicas de cárcel (8 tests)
-- Cartas de Suerte (7 tests)
-- Cartas de Caja (5 tests)
-- Impuestos (3 tests)
-- Movimiento y turno (5 tests)
-- Paso por Salida (4 tests)
+- Operaciones de listas
+- Generador pseudoaleatorio
+- Tablero y consultas
+- Compra de propiedades
+- Cobro de alquiler
+- Detección de monopolio
+- Bancarrota
+- Mecánicas de cárcel
+- Cartas de Suerte
+- Cartas de Caja
+- Impuestos
+- Movimiento y turno
+- Paso por Salida
