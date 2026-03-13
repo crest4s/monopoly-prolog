@@ -115,6 +115,6 @@ Eventos registrados:
 - `graficas.py` — 14 gráficas PNG (barras, líneas, heatmap, boxplot)
 
 ## Tests (`tests/`)
-- Framework: `plunit` (built-in de SWI-Prolog)
-- 13 suites, ~100 tests
-- Ejecución: `swipl tests/run_tests.pl`
+- Framework previsto: `plunit` (built-in de SWI-Prolog)
+- Infraestructura de tests por implementar (no hay suites ni `run_tests.pl` aún).
+- Cuando exista la batería de tests, se documentará aquí el comando de ejecución.
