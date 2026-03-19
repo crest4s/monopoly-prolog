@@ -98,9 +98,9 @@ def compras_por_jugador(df: pd.DataFrame) -> pd.DataFrame:
 def alquileres_pagados(df: pd.DataFrame) -> pd.DataFrame:
     """Total de alquiler pagado por cada jugador."""
     alq = df[df["evento"] == "alquiler"].copy()
-    alq["v3"] = pd.to_numeric(alq["v3"], errors="coerce")
+    alq["v2"] = pd.to_numeric(alq["v2"], errors="coerce")
     return (
-        alq.groupby(["partida", "jugador"])["v3"]
+        alq.groupby(["partida", "jugador"])["v2"]
         .sum()
         .reset_index(name="total_alquiler_pagado")
     )
@@ -109,12 +109,12 @@ def alquileres_pagados(df: pd.DataFrame) -> pd.DataFrame:
 def alquileres_cobrados(df: pd.DataFrame) -> pd.DataFrame:
     """Total de alquiler cobrado por cada jugador (como dueño)."""
     alq = df[df["evento"] == "alquiler"].copy()
-    alq["v3"] = pd.to_numeric(alq["v3"], errors="coerce")
+    alq["v2"] = pd.to_numeric(alq["v2"], errors="coerce")
     return (
-        alq.groupby(["partida", "v4"])["v3"]
+        alq.groupby(["partida", "v3"])["v2"]
         .sum()
         .reset_index(name="total_alquiler_cobrado")
-        .rename(columns={"v4": "jugador"})
+        .rename(columns={"v3": "jugador"})
     )
 
 
@@ -219,9 +219,9 @@ def propiedades_mas_rentables(df: pd.DataFrame) -> pd.DataFrame:
     """Casillas que generan más alquiler total."""
     alq = df[df["evento"] == "alquiler"].copy()
     alq["v1"] = pd.to_numeric(alq["v1"], errors="coerce")
-    alq["v3"] = pd.to_numeric(alq["v3"], errors="coerce")
+    alq["v2"] = pd.to_numeric(alq["v2"], errors="coerce")
     return (
-        alq.groupby("v1")["v3"]
+        alq.groupby("v1")["v2"]
         .sum()
         .reset_index(name="alquiler_total")
         .rename(columns={"v1": "casilla"})
