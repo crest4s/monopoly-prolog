@@ -1,10 +1,10 @@
 % Escenario 11: Alquiler de servicios
-% Ana posee 1 servicio (x4), Bruno posee 2 servicios (x10).
+% Bruno posee 2 servicios (x10), Ana posee 1 propiedad regular.
 
 
 escenario_11(Estado) :-
     Jugadores = [
-        jugador('Ana',   0, 1350, [12]),
+        jugador('Ana',   0, 1350, [1]),
         jugador('Bruno', 20, 1200, [12, 28]),
         jugador('Clara', 10, 1500, [])
     ],
@@ -13,7 +13,7 @@ escenario_11(Estado) :-
 ejecutar_escenario_11 :-
     nl, imprimir_linea,
     write('  ESCENARIO 11: ALQUILER DE SERVICIOS'), nl,
-    write('  Ana: 1 servicio (x4 dados), Bruno: 2 servicios (x10 dados)'), nl,
+    write('  Bruno: 2 servicios (x10 dados), Ana: 1 propiedad regular'), nl,
     imprimir_linea, nl,
     escenario_11(Estado),
     imprimir_estado(Estado),
