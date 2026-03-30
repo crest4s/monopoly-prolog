@@ -12,7 +12,7 @@ regla_bancarrota(Estado, NuevoEstado) :-
     mi_eliminar_elemento(Jugadores, Jugador, JugadoresRestantes),
     mi_longitud(JugadoresRestantes, NumRestantes),
     (NumRestantes > 0 ->
-        NuevoTurno is Turno mod NumRestantes
+        NuevoTurno is (Turno - 1 + NumRestantes) mod NumRestantes
     ;
         NuevoTurno = 0
     ),
