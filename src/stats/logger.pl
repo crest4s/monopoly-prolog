@@ -60,14 +60,12 @@ log_snapshot_turno(estado(Jugadores, _, _, _), Nombre) :-
         mi_longitud(Props, NumProps),
         log_evento(saldo, Nombre, Dinero, Pos, NumProps, '')
     ; true).
-log_snapshot_turno(_, _).
 
 % --- Snapshot de todos los jugadores ---
 log_snapshot_todos(estado(Jugadores, _, _, _)) :-
     (log_activo ->
         log_snapshot_jugadores(Jugadores)
     ; true).
-log_snapshot_todos(_).
 
 log_snapshot_jugadores([]).
 log_snapshot_jugadores([jugador(Nombre, Pos, Dinero, Props)|Rest]) :-
