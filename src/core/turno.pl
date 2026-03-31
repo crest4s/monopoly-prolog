@@ -10,7 +10,8 @@ mover_jugador(Estado, SumaDados, NuevoEstado) :-
     Estado = estado(Jugadores, Tablero, Turno, Semilla),
     mi_obtener_elemento(Jugadores, Turno, Jugador),
     Jugador = jugador(Nombre, PosActual, Dinero, Props),
-    NuevaPos is (PosActual + SumaDados) mod 40,
+    SumaPos is PosActual + SumaDados,
+    mi_mod(SumaPos, 40, NuevaPos),
     comprobar_paso_salida(PosActual, NuevaPos, Dinero, DineroConSalida),
     (DineroConSalida > Dinero ->
         log_evento(paso_salida, Nombre, DineroConSalida, '', '', '')

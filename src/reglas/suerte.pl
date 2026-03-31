@@ -46,7 +46,8 @@ aplicar_efecto_suerte(4, Nombre, Pos, Dinero, Props,
 
 aplicar_efecto_suerte(5, Nombre, Pos, Dinero, Props,
                       Nombre, NuevaPos, Dinero, Props) :-
-    NuevaPos is (Pos + 3) mod 40,
+    Suma5 is Pos + 3,
+    mi_mod(Suma5, 40, NuevaPos),
     format("  [SUERTE] ~w avanza 3 casillas a posicion ~w~n",
            [Nombre, NuevaPos]).
 
