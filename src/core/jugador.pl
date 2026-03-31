@@ -2,14 +2,14 @@
 % jugador.pl — Gestión de jugadores
 % =============================================================================
 
-obtener_jugador_actual(estado(Jugadores, _, Turno, _), Jugador) :-
+obtener_jugador_actual(estado(Jugadores, _, Turno, _, _, _), Jugador) :-
     mi_obtener_elemento(Jugadores, Turno, Jugador).
 
 actualizar_jugador_en_lista(Jugadores, Turno, JugadorNuevo, NuevaLista) :-
     mi_reemplazar_elemento(Jugadores, Turno, JugadorNuevo, NuevaLista).
 
-siguiente_turno(estado(Jugadores, Tablero, Turno, Semilla),
-                estado(Jugadores, Tablero, NuevoTurno, Semilla)) :-
+siguiente_turno(estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios),
+                estado(Jugadores, Tablero, NuevoTurno, Semilla, Carcel, Edificios)) :-
     mi_longitud(Jugadores, N),
     N > 0,
     T1 is Turno + 1,

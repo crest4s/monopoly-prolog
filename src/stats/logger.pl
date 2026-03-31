@@ -1,13 +1,6 @@
 % =============================================================================
 % logger.pl — Logger de eventos a CSV para estadísticas
 % =============================================================================
-% Uso:
-%   iniciar_log('stats/data/partida_1.csv'),
-%   ... jugar ...,
-%   cerrar_log.
-%
-% Si no se inicia el log, todos los predicados son no-ops.
-% =============================================================================
 
 :- dynamic log_activo/0.
 :- dynamic log_stream/1.
@@ -54,20 +47,18 @@ log_evento(Evento, Jugador, V1, V2, V3, V4) :-
     ; true).
 
 % --- Snapshot de un jugador específico ---
-log_snapshot_turno(estado(Jugadores, _, _, _), Nombre) :-
+log_snapshot_turno(estado(Jugadores, _, _, _, _, _), Nombre) :-
     (log_activo ->
         buscar_jugador_por_nombre(Jugadores, Nombre, jugador(_, Pos, Dinero, Props)),
         mi_longitud(Props, NumProps),
         log_evento(saldo, Nombre, Dinero, Pos, NumProps, '')
     ; true).
-log_snapshot_turno(_, _).
 
 % --- Snapshot de todos los jugadores ---
-log_snapshot_todos(estado(Jugadores, _, _, _)) :-
+log_snapshot_todos(estado(Jugadores, _, _, _, _, _)) :-
     (log_activo ->
         log_snapshot_jugadores(Jugadores)
     ; true).
-log_snapshot_todos(_).
 
 log_snapshot_jugadores([]).
 log_snapshot_jugadores([jugador(Nombre, Pos, Dinero, Props)|Rest]) :-

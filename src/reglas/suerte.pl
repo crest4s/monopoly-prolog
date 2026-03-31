@@ -3,7 +3,7 @@
 % =============================================================================
 
 aplicar_suerte(Estado, NuevoEstado) :-
-    Estado = estado(Jugadores, Tablero, Turno, Semilla),
+    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios),
     mi_obtener_elemento(Jugadores, Turno, Jugador),
     Jugador = jugador(Nombre, Posicion, Dinero, Props),
     obtener_casilla(Tablero, Posicion, Casilla),
@@ -13,11 +13,20 @@ aplicar_suerte(Estado, NuevoEstado) :-
     log_evento(suerte, Nombre, Carta, '', '', ''),
     aplicar_efecto_suerte(Carta, Nombre, Posicion, Dinero, Props,
                           NuevoNombre, NuevaPos, NuevoDinero, NuevasProps),
+    % Efecto sobre cárcel (solo carta 6)
+    efecto_suerte_carcel(Carta, NuevoNombre, Carcel, NuevaCarcel),
     JugadorAct = jugador(NuevoNombre, NuevaPos, NuevoDinero, NuevasProps),
     mi_reemplazar_elemento(Jugadores, Turno, JugadorAct, NuevosJugadores),
-    NuevoEstado = estado(NuevosJugadores, Tablero, Turno, S1).
+    NuevoEstado = estado(NuevosJugadores, Tablero, Turno, S1, NuevaCarcel, Edificios).
 
 aplicar_suerte(Estado, Estado).
+
+% --- Efecto sobre la lista de cárcel (solo carta 6) ---
+efecto_suerte_carcel(6, Nombre, Carcel0, Carcel1) :-
+    !,
+    encarcelar_en_lista(Nombre, Carcel0, Carcel1),
+    log_evento(carcel_entrada, Nombre, suerte, '', '', '').
+efecto_suerte_carcel(_, _, Carcel, Carcel).
 
 % --- Efectos de cartas de Suerte ---
 aplicar_efecto_suerte(1, Nombre, Pos, Dinero, Props,
@@ -53,5 +62,4 @@ aplicar_efecto_suerte(5, Nombre, Pos, Dinero, Props,
 
 aplicar_efecto_suerte(6, Nombre, _Pos, Dinero, Props,
                       Nombre, 10, Dinero, Props) :-
-    encarcelar(Nombre),
     format("  [SUERTE] ~w va directamente a la Carcel~n", [Nombre]).

@@ -12,7 +12,7 @@ test(no_paso_salida_sin_vuelta) :-
 
 test(no_paso_salida_ir_a_carcel) :-
     comprobar_paso_salida(35, 10, 1500, NuevoDinero),
-    NuevoDinero =:= 1500.
+    NuevoDinero =:= 1700.  % Pasa por Salida al ir de 35 a 10 (vuelta completa)
 
 test(paso_salida_pos_cero) :-
     comprobar_paso_salida(38, 0, 1000, NuevoDinero),
