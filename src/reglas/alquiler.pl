@@ -1,13 +1,29 @@
 % Regla 1: cobro de alquiler
 
-% Propiedad normal (edificios se evalúan en calcular_alquiler)
-calcular_alquiler(propiedad(_, Color, _, AlquilerBase), Dueño, _, _Pos, _Edificios, Alquiler) :-
-    (tiene_monopolio(Dueño, Color) ->
+% Propiedad normal: alquiler depende de edificios presentes en la casilla
+calcular_alquiler(propiedad(_, Color, _, AlquilerBase), Dueño, _, Pos, Edificios, Alquiler) :-
+    obtener_edificios_en(Pos, Edificios, N),
+    (N > 0 ->
+        multiplicador_edificio(N, Mult),
+        Alquiler is AlquilerBase * Mult,
+        (N =:= 5 ->
+            format("  ** HOTEL en pos ~w! Alquiler x~w~n", [Pos, Mult])
+        ;
+            format("  ** ~w casa(s) en pos ~w! Alquiler x~w~n", [N, Pos, Mult])
+        )
+    ; tiene_monopolio(Dueño, Color) ->
         Alquiler is AlquilerBase * 2,
         format("  ** MONOPOLIO ~w detectado! Alquiler DOBLE~n", [Color])
     ;
         Alquiler is AlquilerBase
     ).
+
+% Multiplicadores de alquiler segun numero de edificios
+multiplicador_edificio(1, 5).
+multiplicador_edificio(2, 15).
+multiplicador_edificio(3, 45).
+multiplicador_edificio(4, 80).
+multiplicador_edificio(5, 125).  % hotel
 
 % Estación: 25 por cada estación del dueño
 calcular_alquiler(estacion(_, _), Dueño, _, _, _, Alquiler) :-

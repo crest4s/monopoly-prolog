@@ -9,6 +9,7 @@ regla_bancarrota(Estado, NuevoEstado) :-
     format("~n  !! ~w esta en BANCARROTA (Saldo: ~w$)~n", [Nombre, Dinero]),
     format("  !! Se liberan ~w propiedades al tablero~n", [Propiedades]),
     liberar_de_lista(Nombre, Carcel, NuevaCarcel),
+    limpiar_edificios_de(Propiedades, Edificios, NuevosEdificios),
     mi_eliminar_elemento(Jugadores, Jugador, JugadoresRestantes),
     mi_longitud(JugadoresRestantes, NumRestantes),
     (NumRestantes > 0 ->
@@ -17,6 +18,6 @@ regla_bancarrota(Estado, NuevoEstado) :-
     ;
         NuevoTurno = 0
     ),
-    NuevoEstado = estado(JugadoresRestantes, Tablero, NuevoTurno, Semilla, NuevaCarcel, Edificios).
+    NuevoEstado = estado(JugadoresRestantes, Tablero, NuevoTurno, Semilla, NuevaCarcel, NuevosEdificios).
 
 regla_bancarrota(Estado, Estado).
