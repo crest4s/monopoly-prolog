@@ -7,8 +7,10 @@ escenario_6(Estado) :-
         jugador('Bruno', 28, 1500, [11, 13]),
         jugador('Clara', 5, 1300, [6, 8, 9])
     ],
-    crear_estado(Jugadores, 33, Estado),
-    encarcelar('Ana').
+    crear_estado(Jugadores, 33, EstadoBase),
+    EstadoBase = estado(J, T, Tu, S, [], E),
+    encarcelar_en_lista('Ana', [], Carcel),
+    Estado = estado(J, T, Tu, S, Carcel, E).
 
 ejecutar_escenario_6 :-
     nl, imprimir_linea,
