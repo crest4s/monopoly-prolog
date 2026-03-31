@@ -22,5 +22,6 @@
 :- consult('test_impuestos').
 :- consult('test_movimiento').
 :- consult('test_paso_salida').
+:- consult('test_compra_casas').
 
 :- initialization(run_tests, main).

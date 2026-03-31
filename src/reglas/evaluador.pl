@@ -1,12 +1,13 @@
 % Dispatcher de evaluación de casillas
 
 evaluar_casilla(Estado, SumaDados, EstadoFinal) :-
-    Estado = estado(Jugadores, Tablero, Turno, _),
+    Estado = estado(Jugadores, Tablero, Turno, _, _, _),
     mi_obtener_elemento(Jugadores, Turno, Jugador),
     Jugador = jugador(_, Posicion, _, _),
     obtener_casilla(Tablero, Posicion, Casilla),
     tipo_casilla(Casilla, Tipo),
-    evaluar_tipo(Tipo, Estado, SumaDados, EstadoFinal).
+    evaluar_tipo(Tipo, Estado, SumaDados, Estado1),
+    regla_compra_casas(Estado1, EstadoFinal).
 
 % Propiedad, estación o servicio
 evaluar_tipo(Tipo, Estado, SumaDados, EstadoFinal) :-

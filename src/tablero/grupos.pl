@@ -13,3 +13,13 @@ grupo_color(azul,     [37, 39]).
 
 posiciones_estaciones([5, 15, 25, 35]).
 posiciones_servicios([12, 28]).
+
+% Precio por cada casa/hotel según el color del grupo
+precio_casas(marron,   50).
+precio_casas(celeste,  50).
+precio_casas(rosa,    100).
+precio_casas(naranja, 100).
+precio_casas(rojo,    150).
+precio_casas(amarillo,150).
+precio_casas(verde,   200).
+precio_casas(azul,    200).
