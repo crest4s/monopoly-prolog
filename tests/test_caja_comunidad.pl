@@ -3,7 +3,7 @@
 % =============================================================================
 :- use_module(library(plunit)).
 
-:- begin_tests(caja_comunidad, [setup(limpiar_carcel)]).
+:- begin_tests(caja_comunidad).
 
 test(caja_carta_1_cobra_200) :-
     aplicar_efecto_caja(1, 'Ana', 2, 1500, [],
