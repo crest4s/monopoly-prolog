@@ -12,7 +12,8 @@ siguiente_turno(estado(Jugadores, Tablero, Turno, Semilla),
                 estado(Jugadores, Tablero, NuevoTurno, Semilla)) :-
     mi_longitud(Jugadores, N),
     N > 0,
-    NuevoTurno is (Turno + 1) mod N.
+    T1 is Turno + 1,
+    mi_mod(T1, N, NuevoTurno).
 
 crear_jugadores([], []).
 crear_jugadores([Nombre|R], [jugador(Nombre, 0, 1500, [])|Jugadores]) :-

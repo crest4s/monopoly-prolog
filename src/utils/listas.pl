@@ -97,3 +97,8 @@ mi_tomar(N, [X|R], [X|R2]) :-
     N > 0,
     N1 is N - 1,
     mi_tomar(N1, R, R2).
+
+% Modulo manual sin operador nativo (para valores pequeños: posiciones y turnos)
+mi_mod(A, B, A) :- A >= 0, A < B, !.
+mi_mod(A, B, R) :- A >= B, !, A1 is A - B, mi_mod(A1, B, R).
+mi_mod(A, B, R) :- A < 0,  !, A1 is A + B, mi_mod(A1, B, R).
