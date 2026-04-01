@@ -49,9 +49,10 @@ log_evento(Evento, Jugador, V1, V2, V3, V4) :-
 % --- Snapshot de un jugador específico ---
 log_snapshot_turno(estado(Jugadores, _, _, _, _, _), Nombre) :-
     (log_activo ->
-        buscar_jugador_por_nombre(Jugadores, Nombre, jugador(_, Pos, Dinero, Props)),
-        mi_longitud(Props, NumProps),
-        log_evento(saldo, Nombre, Dinero, Pos, NumProps, '')
+        (buscar_jugador_por_nombre(Jugadores, Nombre, jugador(_, Pos, Dinero, Props)) ->
+            mi_longitud(Props, NumProps),
+            log_evento(saldo, Nombre, Dinero, Pos, NumProps, '')
+        ; true)
     ; true).
 
 % --- Snapshot de todos los jugadores ---

@@ -26,6 +26,7 @@
 :- consult('reglas/compra').
 :- consult('reglas/alquiler').
 :- consult('reglas/bancarrota').
+:- consult('reglas/compra_casas').
 :- consult('reglas/impuestos').
 :- consult('reglas/suerte').
 :- consult('reglas/caja_comunidad').
