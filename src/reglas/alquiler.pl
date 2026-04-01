@@ -1,7 +1,7 @@
 % Regla 1: cobro de alquiler
 
-% Propiedad normal
-calcular_alquiler(propiedad(_, Color, _, AlquilerBase), Dueño, _, Alquiler) :-
+% Propiedad normal (edificios se evalúan en calcular_alquiler)
+calcular_alquiler(propiedad(_, Color, _, AlquilerBase), Dueño, _, _Pos, _Edificios, Alquiler) :-
     (tiene_monopolio(Dueño, Color) ->
         Alquiler is AlquilerBase * 2,
         format("  ** MONOPOLIO ~w detectado! Alquiler DOBLE~n", [Color])
@@ -10,14 +10,14 @@ calcular_alquiler(propiedad(_, Color, _, AlquilerBase), Dueño, _, Alquiler) :-
     ).
 
 % Estación: 25 por cada estación del dueño
-calcular_alquiler(estacion(_, _), Dueño, _, Alquiler) :-
+calcular_alquiler(estacion(_, _), Dueño, _, _, _, Alquiler) :-
     Dueño = jugador(_, _, _, Props),
     posiciones_estaciones(Estaciones),
     mi_contar_en(Props, Estaciones, NumEstaciones),
     Alquiler is 25 * NumEstaciones.
 
 % Servicio: SumaDados * multiplicador
-calcular_alquiler(servicio(_, _), Dueño, SumaDados, Alquiler) :-
+calcular_alquiler(servicio(_, _), Dueño, SumaDados, _, _, Alquiler) :-
     Dueño = jugador(_, _, _, Props),
     posiciones_servicios(Servicios),
     mi_contar_en(Props, Servicios, NumServicios),
@@ -29,7 +29,7 @@ calcular_alquiler(servicio(_, _), Dueño, SumaDados, Alquiler) :-
     Alquiler is SumaDados * Multiplicador.
 
 regla_alquiler(Estado, SumaDados, NuevoEstado) :-
-    Estado = estado(Jugadores, Tablero, Turno, Semilla),
+    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios),
     mi_obtener_elemento(Jugadores, Turno, Jugador),
     Jugador = jugador(NombreJ, Posicion, DineroJ, PropsJ),
     obtener_casilla(Tablero, Posicion, Casilla),
@@ -40,7 +40,7 @@ regla_alquiler(Estado, SumaDados, NuevoEstado) :-
     Dueño = jugador(NombreD, _, _, _),
     NombreJ \== NombreD,
     !,
-    calcular_alquiler(Tipo, Dueño, SumaDados, Alquiler),
+    calcular_alquiler(Tipo, Dueño, SumaDados, Posicion, Edificios, Alquiler),
     NuevoDineroJ is DineroJ - Alquiler,
     Dueño = jugador(NombreD, PosD, DineroD, PropsD),
     NuevoDineroD is DineroD + Alquiler,
@@ -49,7 +49,7 @@ regla_alquiler(Estado, SumaDados, NuevoEstado) :-
     mi_reemplazar_elemento(Jugadores, Turno, JugadorAct, Jugadores1),
     buscar_indice_jugador(Jugadores1, NombreD, IndiceDueño),
     mi_reemplazar_elemento(Jugadores1, IndiceDueño, DueñoAct, NuevosJugadores),
-    NuevoEstado = estado(NuevosJugadores, Tablero, Turno, Semilla),
+    NuevoEstado = estado(NuevosJugadores, Tablero, Turno, Semilla, Carcel, Edificios),
     nombre_casilla(Casilla, NombreCasilla),
     log_evento(alquiler, NombreJ, Posicion, Alquiler, NombreD, NuevoDineroJ),
     format("  >> ~w paga ~w$ de alquiler a ~w por ~w~n",

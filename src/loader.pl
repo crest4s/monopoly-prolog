@@ -15,7 +15,7 @@
 :- consult('tablero/grupos').
 :- consult('tablero/consultas').
 
-% --- Reglas (cárcel primero por dynamic en_carcel/2) ---
+% --- Reglas de cárcel (sin dynamic: estado en estructura estado/6) ---
 :- consult('reglas/carcel').
 
 % --- Core: jugador (necesario para compra/alquiler) ---

@@ -3,7 +3,7 @@
 % =============================================================================
 
 aplicar_caja_comunidad(Estado, NuevoEstado) :-
-    Estado = estado(Jugadores, Tablero, Turno, Semilla),
+    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios),
     mi_obtener_elemento(Jugadores, Turno, Jugador),
     Jugador = jugador(Nombre, Posicion, Dinero, Props),
     obtener_casilla(Tablero, Posicion, Casilla),
@@ -15,7 +15,7 @@ aplicar_caja_comunidad(Estado, NuevoEstado) :-
                         NuevoNombre, NuevaPos, NuevoDinero, NuevasProps),
     JugadorAct = jugador(NuevoNombre, NuevaPos, NuevoDinero, NuevasProps),
     mi_reemplazar_elemento(Jugadores, Turno, JugadorAct, NuevosJugadores),
-    NuevoEstado = estado(NuevosJugadores, Tablero, Turno, S1).
+    NuevoEstado = estado(NuevosJugadores, Tablero, Turno, S1, Carcel, Edificios).
 
 aplicar_caja_comunidad(Estado, Estado).
 

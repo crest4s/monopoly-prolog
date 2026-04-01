@@ -3,7 +3,7 @@
 % =============================================================================
 :- use_module(library(plunit)).
 
-:- begin_tests(suerte, [setup(limpiar_carcel), cleanup(limpiar_carcel)]).
+:- begin_tests(suerte).
 
 test(suerte_carta_1_gana_100) :-
     aplicar_efecto_suerte(1, 'Ana', 7, 1500, [],
@@ -40,6 +40,7 @@ test(suerte_carta_6_carcel) :-
     aplicar_efecto_suerte(6, 'Ana', 7, 1500, [],
                           'Ana', NuevaPos, 1500, []),
     NuevaPos =:= 10,
-    esta_en_carcel('Ana').
+    efecto_suerte_carcel(6, 'Ana', [], Carcel),
+    esta_en_carcel('Ana', Carcel).
 
 :- end_tests(suerte).
