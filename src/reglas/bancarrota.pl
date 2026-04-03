@@ -1,11 +1,11 @@
 % Regla 3 - bancarrota
 regla_bancarrota(Estado, NuevoEstado) :-
-    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios),
+    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, _Logger),
     mi_obtener_elemento(Jugadores, Turno, Jugador),
     Jugador = jugador(Nombre, _, Dinero, Propiedades),
     Dinero < 0,
     !,
-    log_evento(bancarrota, Nombre, Dinero, '', '', ''),
+    log_evento(Estado, bancarrota, Nombre, Dinero, '', '', '', EstadoLog),
     format("~n  !! ~w esta en BANCARROTA (Saldo: ~w$)~n", [Nombre, Dinero]),
     format("  !! Se liberan ~w propiedades al tablero~n", [Propiedades]),
     liberar_de_lista(Nombre, Carcel, NuevaCarcel),
@@ -18,6 +18,7 @@ regla_bancarrota(Estado, NuevoEstado) :-
     ;
         NuevoTurno = 0
     ),
-    NuevoEstado = estado(JugadoresRestantes, Tablero, NuevoTurno, Semilla, NuevaCarcel, NuevosEdificios).
+    EstadoLog = estado(_, _, _, _, _, _, LoggerLog),
+    NuevoEstado = estado(JugadoresRestantes, Tablero, NuevoTurno, Semilla, NuevaCarcel, NuevosEdificios, LoggerLog).
 
 regla_bancarrota(Estado, Estado).

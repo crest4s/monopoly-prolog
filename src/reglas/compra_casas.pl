@@ -15,7 +15,7 @@ propiedad_menos_edificada([P|Ps], Edificios, Mejor) :-
 
 % Intenta comprar UN edificio en el primer monopolio elegible del jugador actual
 regla_compra_casas(Estado, NuevoEstado) :-
-    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios),
+    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),
     mi_obtener_elemento(Jugadores, Turno, jugador(Nombre, Pos, Dinero, Props)),
     % Buscar grupo de color donde el jugador tenga monopolio y pueda construir
     grupo_color(Color, Grupo),
@@ -32,8 +32,8 @@ regla_compra_casas(Estado, NuevoEstado) :-
     NuevoDinero is Dinero - Precio,
     JugadorAct = jugador(Nombre, Pos, NuevoDinero, Props),
     mi_reemplazar_elemento(Jugadores, Turno, JugadorAct, NuevosJugadores),
-    NuevoEstado = estado(NuevosJugadores, Tablero, Turno, Semilla, Carcel, NuevosEdificios),
-    log_evento(compra_casa, Nombre, PosEdif, Precio, NNuevo, Color),
+    EstadoSinLog = estado(NuevosJugadores, Tablero, Turno, Semilla, Carcel, NuevosEdificios, Logger),
+    log_evento(EstadoSinLog, compra_casa, Nombre, PosEdif, Precio, NNuevo, Color, NuevoEstado),
     (NNuevo =:= 5 ->
         format("  ~w construye un HOTEL en pos ~w (~w) por ~w$~n",
                [Nombre, PosEdif, Color, Precio])

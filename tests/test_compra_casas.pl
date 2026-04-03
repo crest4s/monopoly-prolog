@@ -10,9 +10,9 @@ test(compra_primera_casa) :-
     tablero(T),
     % Ana posee ambas propiedades del grupo marron (pos 1 y 3)
     Jugadores = [jugador('Ana', 1, 1500, [1, 3])],
-    Estado = estado(Jugadores, T, 0, 42, [], []),
+    Estado = estado(Jugadores, T, 0, 42, [], [], logger_inactivo),
     regla_compra_casas(Estado, NuevoEstado),
-    NuevoEstado = estado([jugador('Ana', 1, NuevoDinero, [1, 3])], T, 0, 42, [], NuevosEdificios),
+    NuevoEstado = estado([jugador('Ana', 1, NuevoDinero, [1, 3])], T, 0, 42, [], NuevosEdificios, logger_inactivo),
     NuevoDinero =:= 1450,        % 1500 - 50 (precio casa marron)
     obtener_edificios_en(1, NuevosEdificios, 1).  % Casa en pos 1
 
@@ -20,7 +20,7 @@ test(compra_primera_casa) :-
 test(sin_monopolio_no_construye) :-
     tablero(T),
     Jugadores = [jugador('Ana', 1, 1500, [1])],   % Solo una del grupo marron
-    Estado = estado(Jugadores, T, 0, 42, [], []),
+    Estado = estado(Jugadores, T, 0, 42, [], [], logger_inactivo),
     regla_compra_casas(Estado, NuevoEstado),
     NuevoEstado == Estado.
 
@@ -28,7 +28,7 @@ test(sin_monopolio_no_construye) :-
 test(sin_dinero_no_construye) :-
     tablero(T),
     Jugadores = [jugador('Ana', 1, 30, [1, 3])],  % Solo 30, precio casa marron = 50
-    Estado = estado(Jugadores, T, 0, 42, [], []),
+    Estado = estado(Jugadores, T, 0, 42, [], [], logger_inactivo),
     regla_compra_casas(Estado, NuevoEstado),
     NuevoEstado == Estado.
 
@@ -38,9 +38,9 @@ test(segunda_casa_balance) :-
     % Ana tiene casa en pos 1, debe construir en pos 3 para equilibrar
     Edificios = [edificio(1, 1)],
     Jugadores = [jugador('Ana', 1, 1500, [1, 3])],
-    Estado = estado(Jugadores, T, 0, 42, [], Edificios),
+    Estado = estado(Jugadores, T, 0, 42, [], Edificios, logger_inactivo),
     regla_compra_casas(Estado, NuevoEstado),
-    NuevoEstado = estado(_, T, 0, 42, [], NuevosEdificios),
+    NuevoEstado = estado(_, T, 0, 42, [], NuevosEdificios, _),
     obtener_edificios_en(3, NuevosEdificios, 1).   % Casa nueva en pos 3
 
 % Construccion de hotel (5 edificios)
@@ -49,9 +49,9 @@ test(construye_hotel) :-
     % Azul: pos 37 y 39; 4 casas en ambas → siguiente es hotel
     Edificios = [edificio(37, 4), edificio(39, 4)],
     Jugadores = [jugador('Ana', 37, 1000, [37, 39])],
-    Estado = estado(Jugadores, T, 0, 42, [], Edificios),
+    Estado = estado(Jugadores, T, 0, 42, [], Edificios, logger_inactivo),
     regla_compra_casas(Estado, NuevoEstado),
-    NuevoEstado = estado([jugador('Ana', 37, NuevoDinero, _)], T, 0, 42, [], NuevosEdificios),
+    NuevoEstado = estado([jugador('Ana', 37, NuevoDinero, _)], T, 0, 42, [], NuevosEdificios, _),
     NuevoDinero =:= 800,                             % 1000 - 200 (precio azul)
     obtener_edificios_en(37, NuevosEdificios, 5).    % Hotel en pos 37
 
@@ -61,9 +61,9 @@ test(alquiler_con_casas) :-
     Edificios = [edificio(1, 2)],   % 2 casas en pos 1
     Jugadores = [jugador('Ana', 1, 1500, []),
                  jugador('Bruno', 5, 1500, [1])],
-    Estado = estado(Jugadores, T, 0, 42, [], Edificios),
+    Estado = estado(Jugadores, T, 0, 42, [], Edificios, logger_inactivo),
     regla_alquiler(Estado, 5, NuevoEstado),
-    NuevoEstado = estado(NJ, T, 0, 42, [], Edificios),
+    NuevoEstado = estado(NJ, T, 0, 42, [], Edificios, _),
     mi_obtener_elemento(NJ, 0, jugador('Ana', 1, DineroAna, _)),
     DineroAna =:= 1470.    % 1500 - (2 * 15) = 1500 - 30
 

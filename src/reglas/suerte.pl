@@ -3,30 +3,37 @@
 % =============================================================================
 
 aplicar_suerte(Estado, NuevoEstado) :-
-    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios),
+       Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),
     mi_obtener_elemento(Jugadores, Turno, Jugador),
     Jugador = jugador(Nombre, Posicion, Dinero, Props),
     obtener_casilla(Tablero, Posicion, Casilla),
     tipo_casilla(Casilla, suerte),
     !,
     prng_rango(Semilla, 1, 6, Carta, S1),
-    log_evento(suerte, Nombre, Carta, '', '', ''),
+       EstadoConSemilla = estado(Jugadores, Tablero, Turno, S1, Carcel, Edificios, Logger),
+       log_evento(EstadoConSemilla, suerte, Nombre, Carta, '', '', '', EstadoLog1),
     aplicar_efecto_suerte(Carta, Nombre, Posicion, Dinero, Props,
                           NuevoNombre, NuevaPos, NuevoDinero, NuevasProps),
     % Efecto sobre cárcel (solo carta 6)
-    efecto_suerte_carcel(Carta, NuevoNombre, Carcel, NuevaCarcel),
+       efecto_suerte_carcel(Carta, NuevoNombre, Carcel, NuevaCarcel, EstadoLog1, EstadoLog2),
     JugadorAct = jugador(NuevoNombre, NuevaPos, NuevoDinero, NuevasProps),
     mi_reemplazar_elemento(Jugadores, Turno, JugadorAct, NuevosJugadores),
-    NuevoEstado = estado(NuevosJugadores, Tablero, Turno, S1, NuevaCarcel, Edificios).
+       EstadoLog2 = estado(_, _, _, _, _, _, Logger2),
+       NuevoEstado = estado(NuevosJugadores, Tablero, Turno, S1, NuevaCarcel, Edificios, Logger2).
 
 aplicar_suerte(Estado, Estado).
 
 % --- Efecto sobre la lista de cárcel (solo carta 6) ---
-efecto_suerte_carcel(6, Nombre, Carcel0, Carcel1) :-
+efecto_suerte_carcel(6, Nombre, Carcel0, Carcel1, EstadoIn, EstadoOut) :-
     !,
     encarcelar_en_lista(Nombre, Carcel0, Carcel1),
-    log_evento(carcel_entrada, Nombre, suerte, '', '', '').
-efecto_suerte_carcel(_, _, Carcel, Carcel).
+       log_evento(EstadoIn, carcel_entrada, Nombre, suerte, '', '', '', EstadoOut).
+efecto_suerte_carcel(_, _, Carcel, Carcel, Estado, Estado).
+
+% Wrapper de compatibilidad para tests unitarios que no pasan Estado.
+efecto_suerte_carcel(Carta, Nombre, Carcel0, Carcel1) :-
+       EstadoDummy = estado([], [], 0, 0, Carcel0, [], logger_inactivo),
+       efecto_suerte_carcel(Carta, Nombre, Carcel0, Carcel1, EstadoDummy, _).
 
 % --- Efectos de cartas de Suerte ---
 aplicar_efecto_suerte(1, Nombre, Pos, Dinero, Props,
