@@ -1,7 +1,7 @@
 % Casilla de impuesto
 
 aplicar_impuesto(Estado, NuevoEstado) :-
-    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios),
+    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),
     mi_obtener_elemento(Jugadores, Turno, Jugador),
     Jugador = jugador(Nombre, Posicion, Dinero, Props),
     obtener_casilla(Tablero, Posicion, Casilla),
@@ -10,8 +10,8 @@ aplicar_impuesto(Estado, NuevoEstado) :-
     NuevoDinero is Dinero - Cantidad,
     JugadorAct = jugador(Nombre, Posicion, NuevoDinero, Props),
     mi_reemplazar_elemento(Jugadores, Turno, JugadorAct, NuevosJugadores),
-    NuevoEstado = estado(NuevosJugadores, Tablero, Turno, Semilla, Carcel, Edificios),
-    log_evento(impuesto, Nombre, Posicion, Cantidad, NuevoDinero, ''),
+    EstadoSinLog = estado(NuevosJugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),
+    log_evento(EstadoSinLog, impuesto, Nombre, Posicion, Cantidad, NuevoDinero, '', NuevoEstado),
     format("  >> ~w paga ~w$ por ~w (Saldo: ~w$)~n",
            [Nombre, Cantidad, NombreImp, NuevoDinero]).
 

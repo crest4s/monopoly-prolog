@@ -12,11 +12,11 @@
 
 % --- Simular una partida con logging ---
 simular_partida_con_log(Semilla, MaxTurnos, Archivo) :-
-    iniciar_log(Archivo),
-    inicializar_juego(['Ana', 'Bruno', 'Clara', 'David'], Semilla, Estado),
-    log_snapshot_todos(Estado),
-    jugar_n_turnos(Estado, MaxTurnos, _EstadoFinal),
-    cerrar_log.
+    inicializar_juego(['Ana', 'Bruno', 'Clara', 'David'], Semilla, Estado0),
+    iniciar_log(Estado0, Archivo, Estado1),
+    log_snapshot_todos(Estado1, Estado2),
+    jugar_n_turnos(Estado2, MaxTurnos, EstadoFinal),
+    cerrar_log(EstadoFinal, _).
 
 % --- Simular un lote de partidas ---
 simular_lote(NumPartidas, MaxTurnos) :-
