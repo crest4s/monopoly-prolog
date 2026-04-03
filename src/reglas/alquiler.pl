@@ -45,7 +45,7 @@ calcular_alquiler(servicio(_, _), Dueño, SumaDados, _, _, Alquiler) :-
     Alquiler is SumaDados * Multiplicador.
 
 regla_alquiler(Estado, SumaDados, NuevoEstado) :-
-    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios),
+    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),
     mi_obtener_elemento(Jugadores, Turno, Jugador),
     Jugador = jugador(NombreJ, Posicion, DineroJ, PropsJ),
     obtener_casilla(Tablero, Posicion, Casilla),
@@ -65,9 +65,9 @@ regla_alquiler(Estado, SumaDados, NuevoEstado) :-
     mi_reemplazar_elemento(Jugadores, Turno, JugadorAct, Jugadores1),
     buscar_indice_jugador(Jugadores1, NombreD, IndiceDueño),
     mi_reemplazar_elemento(Jugadores1, IndiceDueño, DueñoAct, NuevosJugadores),
-    NuevoEstado = estado(NuevosJugadores, Tablero, Turno, Semilla, Carcel, Edificios),
+    EstadoSinLog = estado(NuevosJugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),
     nombre_casilla(Casilla, NombreCasilla),
-    log_evento(alquiler, NombreJ, Posicion, Alquiler, NombreD, NuevoDineroJ),
+    log_evento(EstadoSinLog, alquiler, NombreJ, Posicion, Alquiler, NombreD, NuevoDineroJ, NuevoEstado),
     format("  >> ~w paga ~w$ de alquiler a ~w por ~w~n",
            [NombreJ, Alquiler, NombreD, NombreCasilla]).
 
