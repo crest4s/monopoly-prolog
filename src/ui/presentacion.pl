@@ -1,6 +1,6 @@
 % Impresión del estado del juego
 
-imprimir_estado(estado(Jugadores, _, _, _, Carcel, _)) :-
+imprimir_estado(estado(Jugadores, _, _, _, Carcel, _, _)) :-
     imprimir_linea,
     write('  ESTADO ACTUAL DEL JUEGO'), nl,
     imprimir_linea,
@@ -40,7 +40,7 @@ imprimir_nombres_propiedades([P|R], Tablero) :-
     format("~w(~w), ", [Nombre, P]),
     imprimir_nombres_propiedades(R, Tablero).
 
-imprimir_todas_propiedades(estado(Jugadores, Tablero, _, _, _, _)) :-
+imprimir_todas_propiedades(estado(Jugadores, Tablero, _, _, _, _, _)) :-
     write('  PROPIEDADES DETALLADAS:'), nl,
     imprimir_props_todos(Jugadores, Tablero).
 

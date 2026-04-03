@@ -1,7 +1,7 @@
 % Dispatcher de evaluación de casillas
 
 evaluar_casilla(Estado, SumaDados, EstadoFinal) :-
-    Estado = estado(Jugadores, Tablero, Turno, _, _, _),
+    Estado = estado(Jugadores, Tablero, Turno, _, _, _, _),
     mi_obtener_elemento(Jugadores, Turno, Jugador),
     Jugador = jugador(_, Posicion, _, _),
     obtener_casilla(Tablero, Posicion, Casilla),

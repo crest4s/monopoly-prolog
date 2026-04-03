@@ -3,19 +3,21 @@
 % =============================================================================
 
 aplicar_caja_comunidad(Estado, NuevoEstado) :-
-    Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios),
+       Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),
     mi_obtener_elemento(Jugadores, Turno, Jugador),
     Jugador = jugador(Nombre, Posicion, Dinero, Props),
     obtener_casilla(Tablero, Posicion, Casilla),
     tipo_casilla(Casilla, caja_comunidad),
     !,
     prng_rango(Semilla, 1, 5, Carta, S1),
-    log_evento(caja, Nombre, Carta, '', '', ''),
+       EstadoLog = estado(Jugadores, Tablero, Turno, S1, Carcel, Edificios, Logger),
+       log_evento(EstadoLog, caja, Nombre, Carta, '', '', '', EstadoLog2),
     aplicar_efecto_caja(Carta, Nombre, Posicion, Dinero, Props,
                         NuevoNombre, NuevaPos, NuevoDinero, NuevasProps),
     JugadorAct = jugador(NuevoNombre, NuevaPos, NuevoDinero, NuevasProps),
     mi_reemplazar_elemento(Jugadores, Turno, JugadorAct, NuevosJugadores),
-    NuevoEstado = estado(NuevosJugadores, Tablero, Turno, S1, Carcel, Edificios).
+       EstadoLog2 = estado(_, _, _, _, _, _, Logger2),
+       NuevoEstado = estado(NuevosJugadores, Tablero, Turno, S1, Carcel, Edificios, Logger2).
 
 aplicar_caja_comunidad(Estado, Estado).
 
