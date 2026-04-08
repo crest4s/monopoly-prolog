@@ -1,4 +1,4 @@
-% Escenario: 4 jugadores, 200 turnos: simulación completa hasta que quede 1.
+% Escenario 14: Partida larga hasta eliminación
 
 escenario_14(Estado) :-
     inicializar_juego(['Ana', 'Bruno', 'Clara', 'David'], 12345, Estado).

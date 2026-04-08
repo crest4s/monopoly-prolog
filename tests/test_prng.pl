@@ -1,3 +1,4 @@
+% Test: Generador pseudoaleatorio
 :- use_module(library(plunit)).
 
 :- begin_tests(prng).

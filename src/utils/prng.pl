@@ -1,5 +1,4 @@
-% Generador de números pseudoaleatorios
-% Fórmula: S1 = (1103515245 * S0 + 12345) mod 2^31
+% Utils: Generador pseudoaleatorio (LCG con semilla)
 
 prng_siguiente(S0, S1) :-
     S1 is (1103515245 * S0 + 12345) mod 2147483648.

@@ -1,3 +1,4 @@
+% Test: Regla de bancarrota
 :- use_module(library(plunit)).
 
 :- begin_tests(bancarrota).

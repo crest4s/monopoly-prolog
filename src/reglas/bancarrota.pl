@@ -1,4 +1,4 @@
-% Regla 3 - bancarrota
+% Regla 3: Bancarrota y eliminación de jugadores
 regla_bancarrota(Estado, NuevoEstado) :-
     Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, _Logger),
     mi_obtener_elemento(Jugadores, Turno, Jugador),

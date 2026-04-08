@@ -1,6 +1,4 @@
-% =============================================================================
-% grupos.pl — Agrupaciones de color, estaciones y servicios
-% =============================================================================
+% Tablero: Agrupaciones de color, estaciones y servicios
 
 grupo_color(marron,   [1, 3]).
 grupo_color(celeste,  [6, 8, 9]).

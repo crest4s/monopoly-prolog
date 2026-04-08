@@ -1,6 +1,4 @@
 % Escenario 11: Alquiler de servicios
-% Ana posee 1 servicio (x4), Bruno posee 2 servicios (x10).
-
 
 escenario_11(Estado) :-
     Jugadores = [

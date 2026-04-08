@@ -1,5 +1,4 @@
-% Escenario 12: Paso por la casilla de salida
-% Jugadores en posiciones altas del tablero para pasar pronto por la salida.
+% Escenario 12: Paso por la casilla de Salida
 
 escenario_12(Estado) :-
     Jugadores = [

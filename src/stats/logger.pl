@@ -1,10 +1,4 @@
-% =============================================================================
-% logger.pl — Logger de eventos a CSV para estadísticas (sin estado global)
-% =============================================================================
-
-% Logger en el estado:
-%   logger_inactivo
-%   logger_activo(Stream, TurnoLog)
+% Stats: Logger de eventos a CSV para estadísticas
 
 logger_esta_activo(logger_activo(_, _)).
 

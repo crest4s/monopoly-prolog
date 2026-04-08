@@ -1,8 +1,4 @@
-% =============================================================================
-% escenario_caja_comunidad.pl — Escenario 8: Cartas de Caja de Comunidad
-% =============================================================================
-% Jugadores cerca de casillas de Caja (2, 17, 33).
-% =============================================================================
+% Escenario 8: Cartas de Caja de Comunidad
 
 escenario_8(Estado) :-
     Jugadores = [

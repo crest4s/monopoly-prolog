@@ -1,6 +1,4 @@
-% =============================================================================
-% test_movimiento.pl — Tests para movimiento de jugadores
-% =============================================================================
+% Test: Movimiento de jugadores
 :- use_module(library(plunit)).
 
 :- begin_tests(movimiento).

@@ -1,9 +1,4 @@
-% =============================================================================
-% carcel.pl — Mecánicas de cárcel (estado funcional, sin assert/retract)
-% =============================================================================
-% La cárcel se representa como una lista de términos preso(Nombre, Turnos)
-% incluida en la estructura estado/7. No hay predicados dinámicos globales.
-% =============================================================================
+% Regla: Mecánicas de cárcel (estado funcional, sin assert/retract)
 
 % --- Consulta ---
 

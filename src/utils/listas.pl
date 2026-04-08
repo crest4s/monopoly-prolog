@@ -1,4 +1,4 @@
-% Operaciones auxiliares de listas
+% Utils: Operaciones auxiliares de listas
 
 mi_append([], L, L).
 mi_append([X|R1], L2, [X|R3]) :-

@@ -1,6 +1,4 @@
-% =============================================================================
-% consultas.pl — Consultas y accesores del tablero
-% =============================================================================
+% Tablero: Consultas y accesores del tablero
 
 obtener_casilla(Tablero, Pos, Casilla) :-
     mi_obtener_elemento(Tablero, Pos, Casilla).

@@ -1,6 +1,4 @@
-% =============================================================================
-% test_caja_comunidad.pl — Tests para cartas de Caja de Comunidad
-% =============================================================================
+% Test: Cartas de Caja de Comunidad
 :- use_module(library(plunit)).
 
 :- begin_tests(caja_comunidad).

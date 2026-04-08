@@ -1,5 +1,4 @@
 % Escenario 1: Compras iniciales
-% 3 jugadores, 1500€ cada uno, 6 turnos. Semilla 42.
 
 escenario_1(Estado) :-
     inicializar_juego(['Ana', 'Bruno', 'Clara'], 42, Estado).

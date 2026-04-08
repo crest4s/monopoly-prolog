@@ -1,11 +1,4 @@
-% =============================================================================
-% estado.pl — Inicialización y verificación de estado
-% =============================================================================
-% Estado: estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger)
-%   Carcel:   lista de preso(Nombre, TurnosRestantes)
-%   Edificios: lista de edificio(Pos, N)  (N: 1-4 casas, 5 hotel)
-%   Logger:   logger_inactivo | logger_activo(Stream, TurnoLog)
-% =============================================================================
+% Core: Inicialización y verificación de estado
 
 inicializar_juego(Nombres, Semilla, Estado) :-
     tablero(T),

@@ -1,4 +1,4 @@
-% Escenario: simulacion completa de: 4 jugadores, 1500€ cada uno, 10 turnos completos.
+% Escenario 5: Simulación completa de 10 turnos
 
 escenario_5(Estado) :-
     inicializar_juego(['Ana', 'Bruno', 'Clara', 'David'], 2026, Estado).

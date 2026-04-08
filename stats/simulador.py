@@ -1,11 +1,4 @@
-"""
-simulador.py — Ejecuta simulaciones de Monopoly vía SWI-Prolog y genera CSVs.
-
-Uso:
-    python stats/simulador.py [--partidas N] [--turnos T]
-
-Requiere SWI-Prolog (swipl) instalado y accesible en PATH.
-"""
+"""Stats: Ejecuta simulaciones de Monopoly vía SWI-Prolog y genera CSVs."""
 
 import argparse
 import os

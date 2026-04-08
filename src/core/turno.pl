@@ -1,10 +1,6 @@
-% =============================================================================
-% turno.pl — Bucle principal, movimiento y lógica de turnos
-% =============================================================================
+% Core: Bucle principal, movimiento y lógica de turnos
 
-% =============================================================================
-% MOVIMIENTO
-% =============================================================================
+% --- Movimiento ---
 
 mover_jugador(Estado, SumaDados, NuevoEstado) :-
     Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),

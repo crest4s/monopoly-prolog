@@ -1,4 +1,4 @@
-% Utilidades básicas de impresión
+% Utils: Utilidades de impresión por consola
 
 imprimir_lista([]).
 imprimir_lista([X]) :-

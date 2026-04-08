@@ -1,3 +1,4 @@
+% Test: Regla de alquiler
 :- use_module(library(plunit)).
 
 :- begin_tests(alquiler).

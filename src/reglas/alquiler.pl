@@ -1,4 +1,4 @@
-% Regla 1: cobro de alquiler
+% Regla 1: Cobro de alquiler
 
 % Propiedad normal: alquiler depende de edificios presentes en la casilla
 calcular_alquiler(propiedad(_, Color, _, AlquilerBase), Dueño, _, Pos, Edificios, Alquiler) :-

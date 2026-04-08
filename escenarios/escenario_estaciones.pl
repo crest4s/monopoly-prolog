@@ -1,5 +1,4 @@
 % Escenario 10: Alquiler de estaciones
-% Ana posee 1 estación, Bruno posee 3 estaciones.
 
 escenario_10(Estado) :-
     Jugadores = [

@@ -1,4 +1,4 @@
-% Casilla de impuesto
+% Regla: Casillas de impuesto
 
 aplicar_impuesto(Estado, NuevoEstado) :-
     Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),

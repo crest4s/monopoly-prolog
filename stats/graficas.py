@@ -1,11 +1,4 @@
-"""
-graficas.py — Generación de gráficas estadísticas del Monopoly.
-
-Lee los CSVs generados por el simulador y genera gráficas PNG.
-
-Uso:
-    python stats/graficas.py [--datos DIR] [--salida DIR]
-"""
+"""Stats: Generación de gráficas estadísticas del Monopoly."""
 
 import argparse
 import os

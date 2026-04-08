@@ -1,6 +1,4 @@
-% =============================================================================
-% suerte.pl — Cartas de Suerte
-% =============================================================================
+% Regla: Cartas de Suerte
 
 aplicar_suerte(Estado, NuevoEstado) :-
        Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),

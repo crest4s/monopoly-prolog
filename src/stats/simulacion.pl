@@ -1,14 +1,4 @@
-% =============================================================================
-% simulacion.pl — Simulación con logging estadístico
-% =============================================================================
-% Ejecuta N simulaciones y guarda eventos en CSV.
-%
-% Uso desde línea de comandos:
-%   € swipl -g "simular_lote(50, 200)" -t halt main.pl
-%
-% Esto ejecuta 50 partidas de hasta 200 turnos cada una.
-% Los CSV se guardan en stats/data/partida_N.csv
-% =============================================================================
+% Stats: Simulación con logging estadístico
 
 % --- Simular una partida con logging ---
 simular_partida_con_log(Semilla, MaxTurnos, Archivo) :-

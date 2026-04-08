@@ -1,5 +1,4 @@
-% Escenario 4: multiples alquileres consecutivos
-% Propiedades repartidas entre 3 jugadores. Muchos cobros de alquiler.
+% Escenario 4: Múltiples alquileres consecutivos
 
 escenario_4(Estado) :-
     Jugadores = [

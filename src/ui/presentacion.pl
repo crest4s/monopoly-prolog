@@ -1,4 +1,4 @@
-% Impresión del estado del juego
+% UI: Impresión del estado del juego por consola
 
 imprimir_estado(estado(Jugadores, _, _, _, Carcel, _, _)) :-
     imprimir_linea,

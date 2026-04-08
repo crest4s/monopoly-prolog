@@ -1,6 +1,4 @@
-% =============================================================================
-% test_suerte.pl — Tests para cartas de Suerte
-% =============================================================================
+% Test: Cartas de Suerte
 :- use_module(library(plunit)).
 
 :- begin_tests(suerte).

@@ -1,6 +1,4 @@
-% =============================================================================
-% test_tablero.pl — Tests para el tablero
-% =============================================================================
+% Test: Tablero y consultas
 :- use_module(library(plunit)).
 
 :- begin_tests(tablero).

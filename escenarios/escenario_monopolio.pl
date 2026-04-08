@@ -1,4 +1,4 @@
-% Escenario: Ana posee monopolio marrón (pos 1, 3). Bruno cae y paga doble.
+% Escenario 2: Monopolio formado, alquiler doble
 
 escenario_2(Estado) :-
     Jugadores = [

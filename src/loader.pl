@@ -1,9 +1,4 @@
-% =============================================================================
-% loader.pl — Carga todos los modulos del motor Monopoly en orden
-% =============================================================================
-% Ejecutar desde la raíz del proyecto:
-%   ?- consult('src/loader').
-% =============================================================================
+% Carga todos los módulos del motor Monopoly en orden
 
 % --- Utilidades ---
 :- consult('utils/listas').

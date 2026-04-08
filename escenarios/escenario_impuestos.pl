@@ -1,5 +1,4 @@
 % Escenario 13: Casillas de impuestos
-% Jugadores cerca de impuestos (pos 4 y 38).
 
 escenario_13(Estado) :-
     Jugadores = [

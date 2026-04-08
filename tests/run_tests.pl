@@ -1,10 +1,4 @@
-% =============================================================================
-% run_tests.pl — Ejecutor de todos los tests
-% =============================================================================
-% Uso:
-%   $ cd monopolio_v2
-%   $ swipl tests/run_tests.pl
-% =============================================================================
+% Tests: Ejecutor de todos los tests
 
 :- consult('../src/loader').
 :- use_module(library(plunit)).

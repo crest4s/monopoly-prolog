@@ -1,6 +1,4 @@
-% =============================================================================
-% test_compra_casas.pl — Tests para compra de casas y hoteles
-% =============================================================================
+% Test: Compra de casas y hoteles
 :- use_module(library(plunit)).
 
 :- begin_tests(compra_casas).

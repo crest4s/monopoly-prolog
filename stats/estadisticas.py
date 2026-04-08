@@ -1,13 +1,4 @@
-"""
-estadisticas.py — Análisis estadístico de las partidas de Monopoly.
-
-Lee los CSVs generados por el simulador Prolog y calcula estadísticas.
-
-Uso:
-    python stats/estadisticas.py [--datos DIR]
-
-Las estadísticas se imprimen por consola y se guardan en stats/data/resumen.csv.
-"""
+"""Stats: Análisis estadístico de las partidas de Monopoly."""
 
 import argparse
 import os

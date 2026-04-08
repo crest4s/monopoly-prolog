@@ -1,5 +1,4 @@
-% Escenario: se ejecutan turnos suficientes para observar dobles, turnos extra
-% y eventualmente triple doble que lleva a la cárcel.
+% Escenario 9: Dobles y triple doble
 
 escenario_9(Estado) :-
     inicializar_juego(['Ana', 'Bruno', 'Clara'], 314, Estado).

@@ -1,6 +1,4 @@
-% =============================================================================
-% jugador.pl — Gestión de jugadores
-% =============================================================================
+% Core: Gestión de jugadores
 
 obtener_jugador_actual(estado(Jugadores, _, Turno, _, _, _, _), Jugador) :-
     mi_obtener_elemento(Jugadores, Turno, Jugador).

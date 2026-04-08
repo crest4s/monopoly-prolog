@@ -1,3 +1,4 @@
+% Test: Regla de compra
 :- use_module(library(plunit)).
 
 :- begin_tests(compra).

@@ -1,6 +1,4 @@
-% =============================================================================
-% casillas.pl — Definición de las 40 casillas del Monopoly Clásico Español
-% =============================================================================
+% Tablero: Definición de las 40 casillas del Monopoly Clásico Español
 
 tablero([
     % --- Lado Sur (casillas 0–9) ---

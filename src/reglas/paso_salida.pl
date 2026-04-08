@@ -1,4 +1,4 @@
-% Paso por la casilla de Salida
+% Regla: Paso por la casilla de Salida
 
 comprobar_paso_salida(PosAnterior, PosNueva, Dinero, NuevoDinero) :-
     PosNueva < PosAnterior,

@@ -1,4 +1,4 @@
-% Dispatcher de evaluación de casillas
+% Regla: Dispatcher de evaluación de casillas
 
 evaluar_casilla(Estado, SumaDados, EstadoFinal) :-
     Estado = estado(Jugadores, Tablero, Turno, _, _, _, _),

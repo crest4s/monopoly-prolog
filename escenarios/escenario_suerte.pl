@@ -1,9 +1,4 @@
-% =============================================================================
-% escenario_suerte.pl — Escenario 7: Cartas de Suerte
-% =============================================================================
-% Jugadores posicionados cerca de casillas de Suerte (7, 22, 36).
-% Se observan los diferentes efectos de las cartas.
-% =============================================================================
+% Escenario 7: Cartas de Suerte
 
 escenario_7(Estado) :-
     Jugadores = [

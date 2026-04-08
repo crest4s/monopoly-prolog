@@ -1,3 +1,4 @@
+% Test: Detección de monopolio
 :- use_module(library(plunit)).
 
 :- begin_tests(monopolio).

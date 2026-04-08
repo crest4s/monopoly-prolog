@@ -1,5 +1,4 @@
-% Escenario: Bruno empieza cerca de "Ir a Cárcel" (pos 28). Ana ya está en cárcel.
-% Se observan: entrada a cárcel, intentos de salir, pago de 50€.
+% Escenario 6: Mecánicas de cárcel
 
 escenario_6(Estado) :-
     Jugadores = [

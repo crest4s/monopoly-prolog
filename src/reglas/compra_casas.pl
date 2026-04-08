@@ -1,9 +1,4 @@
-% =============================================================================
-% compra_casas.pl — Compra de casas y hoteles para monopolios de color
-% =============================================================================
-% Edificios: lista de terminos edificio(Pos, N) donde N=1..4 casas, N=5 hotel.
-% Se compra UN edificio por llamada en la propiedad menos desarrollada del grupo.
-% =============================================================================
+% Regla: Compra de casas y hoteles
 
 % Encuentra la posicion del grupo con menos edificios actuales
 propiedad_menos_edificada([P], _, P) :- !.

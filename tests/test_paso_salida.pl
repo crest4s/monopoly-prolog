@@ -1,3 +1,4 @@
+% Test: Paso por la casilla de Salida
 :- use_module(library(plunit)).
 
 :- begin_tests(paso_salida).

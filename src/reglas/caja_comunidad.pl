@@ -1,6 +1,4 @@
-% =============================================================================
-% caja_comunidad.pl — Cartas de Caja de Comunidad
-% =============================================================================
+% Regla: Cartas de Caja de Comunidad
 
 aplicar_caja_comunidad(Estado, NuevoEstado) :-
        Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),

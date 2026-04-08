@@ -1,11 +1,4 @@
-% =============================================================================
-% main.pl — Punto de entrada del Monopoly Clásico Español en Prolog
-% =============================================================================
-% Uso:
-%   $ cd monopolio_v2
-%   $ swipl main.pl
-%   ?- main.
-% =============================================================================
+% Punto de entrada del Monopoly Clásico Español en Prolog
 
 % --- Carga del motor y escenarios ---
 :- consult('src/loader').

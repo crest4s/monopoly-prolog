@@ -1,4 +1,4 @@
-% Escenario: Bruno tiene solo 10€. Ana tiene propiedades caras.
+% Escenario 3: Bancarrota con fondos escasos
 escenario_3(Estado) :-
     Jugadores = [
         jugador('Ana',   15, 2000, [21, 23, 24, 31, 32, 34, 37, 39]),
