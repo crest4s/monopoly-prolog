@@ -18,13 +18,6 @@ calcular_alquiler(propiedad(_, Color, _, AlquilerBase), Dueño, _, Pos, Edificio
         Alquiler is AlquilerBase
     ).
 
-% Multiplicadores de alquiler segun numero de edificios
-multiplicador_edificio(1, 5).
-multiplicador_edificio(2, 15).
-multiplicador_edificio(3, 45).
-multiplicador_edificio(4, 80).
-multiplicador_edificio(5, 125).  % hotel
-
 % Estación: 25 por cada estación del dueño
 calcular_alquiler(estacion(_, _), Dueño, _, _, _, Alquiler) :-
     Dueño = jugador(_, _, _, Props),
@@ -43,6 +36,13 @@ calcular_alquiler(servicio(_, _), Dueño, SumaDados, _, _, Alquiler) :-
         Multiplicador = 4
     ),
     Alquiler is SumaDados * Multiplicador.
+
+% Multiplicadores de alquiler segun numero de edificios
+multiplicador_edificio(1, 5).
+multiplicador_edificio(2, 15).
+multiplicador_edificio(3, 45).
+multiplicador_edificio(4, 80).
+multiplicador_edificio(5, 125).  % hotel
 
 regla_alquiler(Estado, SumaDados, NuevoEstado) :-
     Estado = estado(Jugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),
