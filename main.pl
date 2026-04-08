@@ -103,10 +103,10 @@ pedir_modo_partida(Modo, Turnos) :-
     write('   2. Jugar hasta que quede un solo jugador'), nl,
     write('  Opcion: '),
     read(Opcion),
-    ( Opcion =:= 1 ->
+    ( integer(Opcion), Opcion =:= 1 ->
         pedir_entero_rango('  Numero de turnos: ', 1, 100000, Turnos),
         Modo = turnos
-    ; Opcion =:= 2 ->
+    ; integer(Opcion), Opcion =:= 2 ->
         Turnos = 0,
         Modo = hasta_fin
     ;
