@@ -6,7 +6,7 @@ escenario_14(Estado) :-
 ejecutar_escenario_14 :-
     nl, imprimir_linea,
     write('  ESCENARIO 14: PARTIDA LARGA'), nl,
-    write('  4 jugadores, 1500$ cada uno, hasta 200 turnos'), nl,
+    write('  4 jugadores, 1500€ cada uno, hasta 200 turnos'), nl,
     imprimir_linea, nl,
     escenario_14(Estado),
     imprimir_estado(Estado),

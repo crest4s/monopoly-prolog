@@ -1,5 +1,5 @@
 % Escenario: Bruno empieza cerca de "Ir a Cárcel" (pos 28). Ana ya está en cárcel.
-% Se observan: entrada a cárcel, intentos de salir, pago de 50$.
+% Se observan: entrada a cárcel, intentos de salir, pago de 50€.
 
 escenario_6(Estado) :-
     Jugadores = [

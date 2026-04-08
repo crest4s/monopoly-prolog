@@ -1,4 +1,4 @@
-% Escenario: Bruno tiene solo 10$. Ana tiene propiedades caras.
+% Escenario: Bruno tiene solo 10€. Ana tiene propiedades caras.
 escenario_3(Estado) :-
     Jugadores = [
         jugador('Ana',   15, 2000, [21, 23, 24, 31, 32, 34, 37, 39]),
@@ -10,7 +10,7 @@ escenario_3(Estado) :-
 ejecutar_escenario_3 :-
     nl, imprimir_linea,
     write('  ESCENARIO 3: PROXIMO A BANCARROTA'), nl,
-    write('  Bruno tiene solo 10$, propiedades caras en el tablero'), nl,
+    write('  Bruno tiene solo 10€, propiedades caras en el tablero'), nl,
     imprimir_linea, nl,
     escenario_3(Estado),
     imprimir_estado(Estado),

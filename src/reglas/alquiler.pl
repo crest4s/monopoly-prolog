@@ -68,7 +68,7 @@ regla_alquiler(Estado, SumaDados, NuevoEstado) :-
     EstadoSinLog = estado(NuevosJugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),
     nombre_casilla(Casilla, NombreCasilla),
     log_evento(EstadoSinLog, alquiler, NombreJ, Posicion, Alquiler, NombreD, NuevoDineroJ, NuevoEstado),
-    format("  >> ~w paga ~w$ de alquiler a ~w por ~w~n",
+    format("  >> ~w paga ~w€ de alquiler a ~w por ~w~n",
            [NombreJ, Alquiler, NombreD, NombreCasilla]).
 
 regla_alquiler(Estado, _, Estado).

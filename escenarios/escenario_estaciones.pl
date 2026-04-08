@@ -12,7 +12,7 @@ escenario_10(Estado) :-
 ejecutar_escenario_10 :-
     nl, imprimir_linea,
     write('  ESCENARIO 10: ALQUILER DE ESTACIONES'), nl,
-    write('  Ana: 1 estacion (25$), Bruno: 3 estaciones (75$ c/u)'), nl,
+    write('  Ana: 1 estacion (25€), Bruno: 3 estaciones (75€ c/u)'), nl,
     imprimir_linea, nl,
     escenario_10(Estado),
     imprimir_estado(Estado),

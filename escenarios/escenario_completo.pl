@@ -1,4 +1,4 @@
-% Escenario: simulacion completa de: 4 jugadores, 1500$ cada uno, 10 turnos completos.
+% Escenario: simulacion completa de: 4 jugadores, 1500€ cada uno, 10 turnos completos.
 
 escenario_5(Estado) :-
     inicializar_juego(['Ana', 'Bruno', 'Clara', 'David'], 2026, Estado).
@@ -6,7 +6,7 @@ escenario_5(Estado) :-
 ejecutar_escenario_5 :-
     nl, imprimir_linea,
     write('  ESCENARIO 5: SIMULACION DE 10 TURNOS'), nl,
-    write('  4 jugadores, 1500$ cada uno, 10 turnos completos'), nl,
+    write('  4 jugadores, 1500€ cada uno, 10 turnos completos'), nl,
     imprimir_linea, nl,
     escenario_5(Estado),
     imprimir_estado(Estado),

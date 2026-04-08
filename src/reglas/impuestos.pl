@@ -12,7 +12,7 @@ aplicar_impuesto(Estado, NuevoEstado) :-
     mi_reemplazar_elemento(Jugadores, Turno, JugadorAct, NuevosJugadores),
     EstadoSinLog = estado(NuevosJugadores, Tablero, Turno, Semilla, Carcel, Edificios, Logger),
     log_evento(EstadoSinLog, impuesto, Nombre, Posicion, Cantidad, NuevoDinero, '', NuevoEstado),
-    format("  >> ~w paga ~w$ por ~w (Saldo: ~w$)~n",
+    format("  >> ~w paga ~w€ por ~w (Saldo: ~w€)~n",
            [Nombre, Cantidad, NombreImp, NuevoDinero]).
 
 aplicar_impuesto(Estado, Estado).

@@ -1,5 +1,5 @@
 % Escenario 1: Compras iniciales
-% 3 jugadores, 1500$ cada uno, 6 turnos. Semilla 42.
+% 3 jugadores, 1500€ cada uno, 6 turnos. Semilla 42.
 
 escenario_1(Estado) :-
     inicializar_juego(['Ana', 'Bruno', 'Clara'], 42, Estado).
@@ -7,7 +7,7 @@ escenario_1(Estado) :-
 ejecutar_escenario_1 :-
     nl, imprimir_linea,
     write('  ESCENARIO 1: COMPRAS INICIALES'), nl,
-    write('  3 jugadores, 1500$ cada uno, 6 turnos'), nl,
+    write('  3 jugadores, 1500€ cada uno, 6 turnos'), nl,
     imprimir_linea, nl,
     escenario_1(Estado),
     imprimir_estado(Estado),

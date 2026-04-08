@@ -60,7 +60,7 @@ turno_carcel(Estado, _D1, _D2, false, NuevoEstado, PuedeMover) :-
         mi_reemplazar_elemento(Jugadores, Turno, JugadorAct, NuevosJugadores),
         EstadoSinLog = estado(NuevosJugadores, Tablero, Turno, Semilla, NuevaCarcel, Edificios, Logger),
         log_evento(EstadoSinLog, carcel_salida, Nombre, pago, NuevoDinero, '', '', NuevoEstado),
-        format("  ~w no saca dobles. Paga 50$ y sale de la Carcel (Saldo: ~w$)~n",
+        format("  ~w no saca dobles. Paga 50€ y sale de la Carcel (Saldo: ~w€)~n",
                [Nombre, NuevoDinero]),
         PuedeMover = true
     ;

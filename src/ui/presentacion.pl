@@ -11,7 +11,7 @@ imprimir_jugadores([], _).
 imprimir_jugadores([J|R], Carcel) :-
     J = jugador(Nombre, Pos, Dinero, Props),
     mi_longitud(Props, NumProps),
-    format("  ~w | Pos: ~w | Dinero: ~w$ | Propiedades: ~w",
+    format("  ~w | Pos: ~w | Dinero: ~w€ | Propiedades: ~w",
            [Nombre, Pos, Dinero, NumProps]),
     (esta_en_carcel(Nombre, Carcel) ->
         turnos_en_carcel(Nombre, Carcel, T),

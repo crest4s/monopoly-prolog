@@ -77,17 +77,17 @@ python stats/graficas.py
 |---|-----------|-------------|
 | 1 | Compras iniciales | 3 jugadores, primeras compras |
 | 2 | Monopolio formado | Alquiler doble por monopolio |
-| 3 | Bancarrota | Jugador con 10$ entre propiedades caras |
+| 3 | Bancarrota | Jugador con 10€ entre propiedades caras |
 | 4 | Alquileres múltiples | Propiedades repartidas, muchos cobros |
 | 5 | Simulación completa | 4 jugadores, 10 turnos |
 | 6 | Cárcel | Mecánicas completas de encarcelamiento |
 | 7 | Suerte | Diferentes cartas de Suerte |
 | 8 | Caja de Comunidad | Diferentes cartas de Caja |
 | 9 | Dobles | Dobles consecutivos y triple doble |
-| 10 | Estaciones | Alquiler progresivo (25$ × num. estaciones) |
+| 10 | Estaciones | Alquiler progresivo (25€ × num. estaciones) |
 | 11 | Servicios | Alquiler por dados (×4 o ×10) |
-| 12 | Paso por Salida | Cobro de 200$ al dar la vuelta |
-| 13 | Impuestos | Casillas de impuesto (200$ y 100$) |
+| 12 | Paso por Salida | Cobro de 200€ al dar la vuelta |
+| 13 | Impuestos | Casillas de impuesto (200€ y 100€) |
 | 14 | Partida larga | 4 jugadores, hasta 200 turnos |
 
 ## Estadísticas Generadas

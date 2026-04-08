@@ -72,7 +72,7 @@ estado(Jugadores, Tablero, Turno, Semilla)
 
 ### R1: Alquiler (`reglas/alquiler.pl`)
 - **Propiedad**: AlquilerBase (×2 si monopolio).
-- **Estación**: 25$ × número de estaciones del dueño.
+- **Estación**: 25€ × número de estaciones del dueño.
 - **Servicio**: SumaDados × (4 si 1 servicio, 10 si 2).
 
 ### R2: Monopolio (`reglas/monopolio.pl`)
@@ -83,7 +83,7 @@ estado(Jugadores, Tablero, Turno, Semilla)
 
 ### Cárcel (`reglas/carcel.pl`)
 - Entrada: casilla 30 o carta suerte o 3 dobles consecutivos.
-- Salida: dobles (gratis) o pago de 50$ al 3er turno.
+- Salida: dobles (gratis) o pago de 50€ al 3er turno.
 
 ### Cartas (`reglas/suerte.pl`, `reglas/caja_comunidad.pl`)
 - 6 efectos de Suerte, 5 de Caja de Comunidad.

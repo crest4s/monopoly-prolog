@@ -6,7 +6,7 @@ regla_bancarrota(Estado, NuevoEstado) :-
     Dinero < 0,
     !,
     log_evento(Estado, bancarrota, Nombre, Dinero, '', '', '', EstadoLog),
-    format("~n  !! ~w esta en BANCARROTA (Saldo: ~w$)~n", [Nombre, Dinero]),
+    format("~n  !! ~w esta en BANCARROTA (Saldo: ~w€)~n", [Nombre, Dinero]),
     format("  !! Se liberan ~w propiedades al tablero~n", [Propiedades]),
     liberar_de_lista(Nombre, Carcel, NuevaCarcel),
     limpiar_edificios_de(Propiedades, Edificios, NuevosEdificios),

@@ -137,7 +137,7 @@ def grafica_evolucion_saldo(df: pd.DataFrame, salida: str):
 
     ax.set_title(f"Evolución de Saldo (Partida {primera_partida})", fontsize=14)
     ax.set_xlabel("Turno")
-    ax.set_ylabel("Dinero ($)")
+    ax.set_ylabel("Dinero (€)")
     ax.legend()
     ax.axhline(0, color="red", linestyle=":", alpha=0.5)
     plt.tight_layout()
@@ -187,7 +187,7 @@ def grafica_alquiler_balance(df: pd.DataFrame, salida: str):
     ax.set_xticklabels(merged["jugador"])
     ax.set_title("Balance de Alquiler Promedio por Jugador", fontsize=14)
     ax.set_xlabel("Jugador")
-    ax.set_ylabel("Dinero ($)")
+    ax.set_ylabel("Dinero (€)")
     ax.legend()
     plt.tight_layout()
     fig.savefig(os.path.join(salida, "alquiler_balance.png"), dpi=150)
@@ -200,7 +200,7 @@ def grafica_efectos_suerte(df: pd.DataFrame, salida: str):
     if datos.empty:
         return
 
-    nombres = {1: "+100$", 2: "-50$", 3: "Ir Salida", 4: "+50$", 5: "Avanza 3", 6: "Cárcel"}
+    nombres = {1: "+100€", 2: "-50€", 3: "Ir Salida", 4: "+50€", 5: "Avanza 3", 6: "Cárcel"}
     datos["efecto"] = datos["carta"].map(nombres).fillna("?")
 
     fig, ax = plt.subplots(figsize=(8, 6))
@@ -219,7 +219,7 @@ def grafica_efectos_caja(df: pd.DataFrame, salida: str):
     if datos.empty:
         return
 
-    nombres = {1: "+200$", 2: "-100$", 3: "Ir Salida", 4: "+100$", 5: "-50$"}
+    nombres = {1: "+200€", 2: "-100€", 3: "Ir Salida", 4: "+100€", 5: "-50€"}
     datos["efecto"] = datos["carta"].map(nombres).fillna("?")
 
     fig, ax = plt.subplots(figsize=(8, 6))
@@ -244,7 +244,7 @@ def grafica_propiedades_rentables(df: pd.DataFrame, salida: str):
     sns.barplot(data=datos, x="nombre", y="alquiler_total", ax=ax, hue="nombre", legend=False)
     ax.set_title("Propiedades Más Rentables (Total Alquiler Generado)", fontsize=14)
     ax.set_xlabel("Propiedad")
-    ax.set_ylabel("Alquiler Total ($)")
+    ax.set_ylabel("Alquiler Total (€)")
     plt.xticks(rotation=45, ha="right")
     plt.tight_layout()
     fig.savefig(os.path.join(salida, "propiedades_rentables.png"), dpi=150)
@@ -315,7 +315,7 @@ def grafica_impuestos(df: pd.DataFrame, salida: str):
     sns.barplot(data=prom, x="jugador", y="total_impuestos", ax=ax, hue="jugador", legend=False)
     ax.set_title("Impuestos Promedio Pagados por Jugador", fontsize=14)
     ax.set_xlabel("Jugador")
-    ax.set_ylabel("Impuestos ($)")
+    ax.set_ylabel("Impuestos (€)")
     plt.tight_layout()
     fig.savefig(os.path.join(salida, "impuestos_jugador.png"), dpi=150)
     plt.close(fig)

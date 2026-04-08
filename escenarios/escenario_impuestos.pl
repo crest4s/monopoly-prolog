@@ -12,7 +12,7 @@ escenario_13(Estado) :-
 ejecutar_escenario_13 :-
     nl, imprimir_linea,
     write('  ESCENARIO 13: CASILLAS DE IMPUESTOS'), nl,
-    write('  Jugadores cerca de impuestos (pos 4: 200$, pos 38: 100$)'), nl,
+    write('  Jugadores cerca de impuestos (pos 4: 200€, pos 38: 100€)'), nl,
     imprimir_linea, nl,
     escenario_13(Estado),
     imprimir_estado(Estado),
