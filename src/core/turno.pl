@@ -122,3 +122,22 @@ jugar(Estado, TurnosRestantes, EstadoFinal) :-
 
 jugar_n_turnos(Estado, N, EstadoFinal) :-
     jugar(Estado, N, EstadoFinal).
+
+jugar_hasta_fin(Estado, EstadoFinal) :-
+    Estado = estado(Jugadores, _, _, _, _, _, _),
+    verificar_fin(Jugadores),
+    !,
+    Jugadores = [jugador(Ganador, _, _, _)],
+    log_evento(Estado, ganador, Ganador, '', '', '', '', EstadoLog),
+    format("~n=== ~w GANA LA PARTIDA! ===~n", [Ganador]),
+    imprimir_estado(EstadoLog),
+    EstadoFinal = EstadoLog.
+
+jugar_hasta_fin(Estado, EstadoFinal) :-
+    Estado = estado(Jugadores, _, _, _, _, _, _),
+    mi_longitud(Jugadores, NumJugadores),
+    NumJugadores > 1,
+    ejecutar_turno(Estado, Estado1),
+    siguiente_turno(Estado1, Estado2),
+    incrementar_turno_log(Estado2, Estado3),
+    jugar_hasta_fin(Estado3, EstadoFinal).
