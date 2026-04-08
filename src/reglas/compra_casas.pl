@@ -35,10 +35,10 @@ regla_compra_casas(Estado, NuevoEstado) :-
     EstadoSinLog = estado(NuevosJugadores, Tablero, Turno, Semilla, Carcel, NuevosEdificios, Logger),
     log_evento(EstadoSinLog, compra_casa, Nombre, PosEdif, Precio, NNuevo, Color, NuevoEstado),
     (NNuevo =:= 5 ->
-        format("  ~w construye un HOTEL en pos ~w (~w) por ~w$~n",
+        format("  ~w construye un HOTEL en pos ~w (~w) por ~w€~n",
                [Nombre, PosEdif, Color, Precio])
     ;
-        format("  ~w construye casa #~w en pos ~w (~w) por ~w$~n",
+        format("  ~w construye casa #~w en pos ~w (~w) por ~w€~n",
                [Nombre, NNuevo, PosEdif, Color, Precio])
     ).
 

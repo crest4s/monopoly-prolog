@@ -101,14 +101,14 @@ jugar(Estado, 0, Estado) :-
     write('=== FIN DE LA SIMULACION (turnos agotados) ==='), nl,
     imprimir_estado(Estado).
 
-jugar(Estado, _, Estado) :-
+jugar(Estado, _, EstadoFinal) :-
     Estado = estado(Jugadores, _, _, _, _, _, _),
     verificar_fin(Jugadores),
     !,
     Jugadores = [jugador(Ganador, _, _, _)],
-    log_evento(Estado, ganador, Ganador, '', '', '', '', EstadoLog),
+    log_evento(Estado, ganador, Ganador, '', '', '', '', EstadoFinal),
     format("~n=== ~w GANA LA PARTIDA! ===~n", [Ganador]),
-    imprimir_estado(EstadoLog).
+    imprimir_estado(EstadoFinal).
 
 jugar(Estado, TurnosRestantes, EstadoFinal) :-
     Estado = estado(Jugadores, _, _, _, _, _, _),
@@ -118,6 +118,7 @@ jugar(Estado, TurnosRestantes, EstadoFinal) :-
     siguiente_turno(Estado1, Estado2),
     incrementar_turno_log(Estado2, Estado3),
     NuevosTurnos is TurnosRestantes - 1,
+    !,
     jugar(Estado3, NuevosTurnos, EstadoFinal).
 
 jugar_n_turnos(Estado, N, EstadoFinal) :-
@@ -140,4 +141,5 @@ jugar_hasta_fin(Estado, EstadoFinal) :-
     ejecutar_turno(Estado, Estado1),
     siguiente_turno(Estado1, Estado2),
     incrementar_turno_log(Estado2, Estado3),
+    !,
     jugar_hasta_fin(Estado3, EstadoFinal).
