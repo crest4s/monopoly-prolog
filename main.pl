@@ -37,6 +37,7 @@ main :-
     write('  12. Paso por Salida'), nl,
     write('  13. Casillas de impuestos'), nl,
     write('  14. Partida larga (hasta 200 turnos)'), nl, nl,
+    write('  15. Modo libre (jugadores y turnos configurables)'), nl, nl,
     write('  Estadisticas:'), nl,
     write('  20. Simular lote (50 partidas con CSV)'), nl, nl,
     write('   0. Salir'), nl, nl,
@@ -61,6 +62,7 @@ ejecutar_opcion(11) :- !, ejecutar_escenario_11, nl, main.
 ejecutar_opcion(12) :- !, ejecutar_escenario_12, nl, main.
 ejecutar_opcion(13) :- !, ejecutar_escenario_13, nl, main.
 ejecutar_opcion(14) :- !, ejecutar_escenario_14, nl, main.
+ejecutar_opcion(15) :- !, ejecutar_modo_libre, nl, main.
 ejecutar_opcion(20) :-
     !,
     write('  Simulando 50 partidas de 200 turnos...'), nl,
@@ -70,6 +72,89 @@ ejecutar_opcion(20) :-
 ejecutar_opcion(_) :-
     write('  Opcion no valida. Intente de nuevo.'), nl,
     main.
+
+ejecutar_modo_libre :-
+    nl, imprimir_linea,
+    write('  PARTIDA LIBRE'), nl,
+    write('  Elige jugadores, semilla y si quieres limite de turnos o partida completa.'), nl,
+    imprimir_linea, nl,
+    pedir_entero_rango('  Numero de jugadores (2-8): ', 2, 8, NumJugadores),
+    pedir_nombres_jugadores(1, NumJugadores, Nombres),
+    pedir_semilla(Semilla),
+    pedir_modo_partida(Modo, Turnos),
+    inicializar_juego(Nombres, Semilla, EstadoInicial),
+    nl,
+    write('=== ESTADO INICIAL ==='), nl,
+    imprimir_estado(EstadoInicial),
+    (Modo = turnos ->
+        jugar_n_turnos(EstadoInicial, Turnos, EstadoFinal)
+    ;
+        jugar_hasta_fin(EstadoInicial, EstadoFinal)
+    ),
+    nl,
+    write('=== RESULTADO FINAL MODO LIBRE ==='), nl,
+    imprimir_estado(EstadoFinal),
+    imprimir_todas_propiedades(EstadoFinal).
+
+pedir_modo_partida(Modo, Turnos) :-
+    nl,
+    write('  Modo de finalizacion:'), nl,
+    write('   1. Jugar un numero fijo de turnos'), nl,
+    write('   2. Jugar hasta que quede un solo jugador'), nl,
+    write('  Opcion: '),
+    read(Opcion),
+    ( Opcion =:= 1 ->
+        pedir_entero_rango('  Numero de turnos: ', 1, 100000, Turnos),
+        Modo = turnos
+    ; Opcion =:= 2 ->
+        Turnos = 0,
+        Modo = hasta_fin
+    ;
+        write('  Opcion no valida. Intente de nuevo.'), nl,
+        pedir_modo_partida(Modo, Turnos)
+    ).
+
+pedir_semilla(Semilla) :-
+    repeat,
+    nl,
+    write('  Semilla de la partida (entero): '),
+    read(Entrada),
+    ( integer(Entrada) ->
+        Semilla = Entrada,
+        !
+    ;
+        write('  Debe ser un numero entero.'), nl,
+        fail
+    ).
+
+pedir_nombres_jugadores(Indice, Total, []) :-
+    Indice > Total,
+    !.
+
+pedir_nombres_jugadores(Indice, Total, [Nombre|Resto]) :-
+    Indice =< Total,
+    pedir_nombre_jugador(Indice, Nombre),
+    Siguiente is Indice + 1,
+    pedir_nombres_jugadores(Siguiente, Total, Resto).
+
+pedir_nombre_jugador(Indice, Nombre) :-
+    repeat,
+    format('  Nombre del jugador ~w (atomo, por ejemplo ana o ''Juan Perez''): ', [Indice]),
+    read(Nombre),
+    atom(Nombre),
+    !.
+
+pedir_entero_rango(Prompt, Min, Max, Valor) :-
+    repeat,
+    write(Prompt),
+    read(Entrada),
+    ( integer(Entrada), Entrada >= Min, Entrada =< Max ->
+        Valor = Entrada,
+        !
+    ;
+        format('  Debe ser un numero entre ~w y ~w.~n', [Min, Max]),
+        fail
+    ).
 
 ejecutar :- main.
 
