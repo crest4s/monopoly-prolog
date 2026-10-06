@@ -120,3 +120,7 @@ El workflow `.github/workflows/ci-prolog.yml` los lanza en cada push.
 - Adrián Morales Rodríguez ([@crest4s](https://github.com/crest4s))
 - [@aliciasiguenza](https://github.com/aliciasiguenza)
 - [@avuren13](https://github.com/avuren13)
+
+## Licencia
+
+[MIT](LICENSE)
