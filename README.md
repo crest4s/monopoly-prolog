@@ -3,6 +3,8 @@
 Motor de simulación del Monopoly clásico español implementado en SWI-Prolog,
 con sistema de estadísticas en Python.
 
+Práctica en grupo de la Universidad de Alcalá (UAH), curso 2025-26.
+
 ## Requisitos
 
 - **SWI-Prolog** >= 9.0 (`swipl`)
@@ -12,7 +14,7 @@ con sistema de estadísticas en Python.
 ## Estructura del Proyecto
 
 ```
-monopolio_v2/
+monopolio_prolog/
 ├── main.pl                      # Punto de entrada con menú
 ├── src/                         # Código fuente modular
 │   ├── loader.pl                # Carga de dependencias
@@ -37,7 +39,6 @@ monopolio_v2/
 ### Jugar escenarios
 
 ```bash
-cd monopolio_v2
 swipl main.pl
 ?- main.
 ```
@@ -45,7 +46,6 @@ swipl main.pl
 ### Ejecutar tests automáticos
 
 ```bash
-cd monopolio_v2
 swipl tests/run_tests.pl
 ```
 
@@ -53,7 +53,6 @@ swipl tests/run_tests.pl
 
 ```bash
 # 1. Simular partidas (genera CSVs)
-cd monopolio_v2
 swipl -g "simular_lote(50, 200)" -t halt main.pl
 
 # 2. Analizar estadísticas
@@ -106,20 +105,18 @@ python stats/graficas.py
 - Impuestos pagados por jugador
 - Frecuencia de victorias
 
-## Tests (pendiente)
+## Tests
 
-Está planificada una batería de tests unitarios con plunit que cubrirá, entre otros, los siguientes aspectos:
+Batería de tests unitarios con `plunit` en `tests/` (un fichero por módulo: listas, generador pseudoaleatorio, tablero, compra, compra de casas, alquiler, monopolio, bancarrota, cárcel, Suerte, Caja de Comunidad, impuestos, movimiento y paso por Salida). Se ejecutan con:
 
-- Operaciones de listas
-- Generador pseudoaleatorio
-- Tablero y consultas
-- Compra de propiedades
-- Cobro de alquiler
-- Detección de monopolio
-- Bancarrota
-- Mecánicas de cárcel
-- Cartas de Suerte
-- Cartas de Caja
-- Impuestos
-- Movimiento y turno
-- Paso por Salida
+```bash
+swipl tests/run_tests.pl
+```
+
+El workflow `.github/workflows/ci-prolog.yml` los lanza en cada push.
+
+## Autores
+
+- Adrián Morales Rodríguez ([@crest4s](https://github.com/crest4s))
+- [@aliciasiguenza](https://github.com/aliciasiguenza)
+- [@avuren13](https://github.com/avuren13)
